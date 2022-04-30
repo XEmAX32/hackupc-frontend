@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { socket } from './socketWorker.js'
 
 
-function Wall ({image, objects, items}) {
+function Wall ({image, objects}) {
 
 	return (
 		<div id="wallContainer" style={{backgroundImage:image}}>
@@ -16,7 +16,7 @@ function Wall ({image, objects, items}) {
 	)
 }
 
-function Object ({x, y, width, height, question, answers, item}) {
+function Object ({x, y, width, height, objects}) {
 
 	const [isOpen, setIsOpen] = React.useState(false)
 
