@@ -21,9 +21,9 @@ function App() {
 
   if(status == "not-logged-in") {  
     return (
-      <div style={{width:"30%", margin: "0 auto"}}>
+      <main id="pager">
         <Registration socket status setStatus/>
-      </div>
+      </main>
     );
   } else {
     return (

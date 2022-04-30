@@ -20,7 +20,7 @@ function Registration(socket, status, setStatus) {
   const descriptions = ["📍 Your phone will help you find them inside the campus.", "😉 Every phone represent a wall: look at the game logo to know how.", "❓ Everytime you’ll interact with an object you have to answer a question. Work together to solve them. ", "💡 Easy, right? I won’t be that sure. Look carefully at the keys and follow the right  suggestions. "];
 
   return (
-    <>
+    <div className="pageContainer">
       {pageNumber > 3 ? 
         <div>
           <div className="title">Log in with your HackUPC ID.</div>
@@ -59,7 +59,7 @@ function Registration(socket, status, setStatus) {
             <img src={images[pageNumber]} style={{marginBottom: '20px', width: '200px', height: '200px'}}/>
           </div>
           <div className="description" style={{marginBottom: '20px'}}>{descriptions[pageNumber]}</div>
-          <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: pageNumber > 0 ? 'space-between' : 'right', alignItems: 'center'}}>
+          <div className="buttons" style={{justifyContent: pageNumber > 0 ? 'space-between' : 'right'}}>
             {pageNumber > 0 && <div className="backBtn" onClick={() => setPageNumber(prevState => prevState-1)}><img src={backBtn}/></div>}
             <div className="nextBtn" style={{marginLeft: pageNumber > 0 ? 0 : 'auto'}} onClick={() => setPageNumber(prevState => prevState+1)}>Next →</div>
           </div>
@@ -80,7 +80,7 @@ function Registration(socket, status, setStatus) {
             }
           }}
         /> */}
-    </>
+    </div>
   );
 }
 
