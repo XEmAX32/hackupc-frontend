@@ -10,10 +10,14 @@ function App() {
   const [status, setStatus] = useState("registration");
   const [response, setResponse] = useState();
   const [data, setData] = useState('No result');
+  const [wallImage, setWallImage] = useState('');
+  const [objects, setObjects] = useState([]);
 
   useEffect(() => {
     console.log('here')
     console.log(socket)
+
+
     socket.onAny((tt, content) => console.log(tt, content))
     socket.on('status', (newStatus) => {
       console.log('status', newStatus)
@@ -21,6 +25,11 @@ function App() {
     })
 
 	socket.on('members', ()=>null)
+
+	socket.on("questions", (wallImage, objects) => {
+		setWallImage(wallImage)
+		setObjects(objects)
+	})
 
   }, []);
 
@@ -52,7 +61,7 @@ function App() {
     case 'playing':
       return (
         <main id="pager">
-          <Wall />
+          <Wall image={wallImage} objects />
         </main>
       );
 
