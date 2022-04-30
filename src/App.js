@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
 import Registration from "./registration";
 import Question from './Question';
@@ -12,7 +11,7 @@ function App() {
     text: "Which of the following names belongs to an HackUPC Organizer?",
     options: [{text: "ciao", type: 0}, {text: "ciaone", type: 1}, {text: "triple ciao", type: 0}, {text: "no clue", type: 0}]
   }
-  if(status == "not-logged-in") {  
+  if(status === "not-logged-in") {
     return (
       <main id="pager">
         <Registration status setStatus/>
