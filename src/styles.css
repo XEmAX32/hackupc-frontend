@@ -149,3 +149,42 @@
 .question-correct-option {
   background-color: #64FCD9;
 }
+/*
+  padding: 10px 20px;
+} */
+
+#wallContainer {
+	width:100%;
+	height:100%;
+
+	position:relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	/*center popup*/
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.object {
+	position:absolute;
+}
+
+.popupContainer {
+	opacity:0;
+	transition:0.2;
+
+	width:0px;
+	height:0px;
+
+	z-index:auto;
+}
+
+.popupContainer.open {
+	opacity:1;
+	width:100%;
+	height:100%;
+
+	z-index:1000;
+}
