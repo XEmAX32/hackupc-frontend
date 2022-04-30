@@ -21,8 +21,8 @@ function Question(args) {
         <div className="special" style={{fontSize: 25, marginTop: 10}}>{args.question}</div>
         <div style={{border: "1px solid #000", width: 350, marginTop: 30, marginBottom: 39}}/>
         <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
-          {args.options.map(opt => (
-            <div className="question-option" style={{backgroundColor: (opt.type == 1 && selected) ? '#64FCD9' : '#FFF'}} onClick={() => opt.type == 1 ? success() : args.erronousCallback()}>
+          {args.options.map((opt, i) => (
+            <div className="question-option" style={{backgroundColor: (i == args.correct && selected) ? '#64FCD9' : '#FFF'}} onClick={() => i == args.correct ? success() : args.erronousCallback()}>
               {opt.text}
             </div>
           ))}

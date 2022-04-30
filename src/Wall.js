@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-
+import Question from './Question'
 import { socket } from './socketWorker.js'
-
+import Win from './Win';
+import NoKey from './NoKey';
 
 function Wall ({image, objects}) {
 
@@ -16,9 +17,10 @@ function Wall ({image, objects}) {
 	)
 }
 
-function Object ({x, y, width, height, objects}) {
+function Object ({x, y, width, height, question, item}) {
 
-	const [isOpen, setIsOpen] = React.useState(false)
+	const [isOpen, setIsOpen] = useState(false);
+  const [popupType, setPopupType] = useState(0);
 
 	return (
 		<>
@@ -30,8 +32,10 @@ function Object ({x, y, width, height, objects}) {
 			</div>
 
 			<div className={"popupContainer" + (isOpen ? ' open': '')}>
-				{/*inside here goes the Question component*/}
+				{popupType == 0 ? <Question img={item.image} question={question.text} options={question.answers} correct={question.answer} successfullCallback={() => {setPopupType(1)}} errouneousCallback={() => {setPopupType(2)}}/> : (popupType == 1 ? <Win /> : <NoKey />)}
 			</div>
 		</>
 	)
 }
+
+export default Wall;

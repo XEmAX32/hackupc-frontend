@@ -11,7 +11,7 @@ import QRCodeGraphics from './assets/qrcode-graphics.svg';
 import player_types from './assets/players-skins.json';
 
 function Registration(status, setStatus) {  
-  const [pageNumber, setPageNumber] = useState(5);
+  const [pageNumber, setPageNumber] = useState(0);
   const [response, setResponse] = useState();
   const [data, setData] = useState('No result');
   const [QRPopupStatus, setQRPopupStatus] = useState(0);
@@ -44,7 +44,7 @@ function Registration(status, setStatus) {
                 <video id="qrcode-live"/>
               </div>
             </div>
-            <img style={{width: '100%'}} src={QRCodeGraphics} />
+            <img style={{width: '100%', marginLeft: -20, marginRight: -20}} src={QRCodeGraphics} />
             <QrReader
               videoId="qrcode-live"
               // ViewFinder={() => <div style={{position: 'absolute', top:200, zIndex: 9999}}>test</div>}
