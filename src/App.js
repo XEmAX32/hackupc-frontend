@@ -7,12 +7,16 @@ import Win from './Win';
 import Lobby from './Lobby'
 
 function App() {
-  const [status, setStatus] = useState("filling");
+  const [status, setStatus] = useState("registration");
   const [response, setResponse] = useState();
   const [data, setData] = useState('No result');
 
   useEffect(() => {
+    console.log('here')
+    console.log(socket)
+    socket.onAny((tt, content) => console.log(tt, content))
     socket.on('status', (newStatus) => {
+      console.log('status', newStatus)
       setStatus(newStatus);
     })
 
@@ -21,18 +25,23 @@ function App() {
   }, []);
 
   switch(status) {
-    case 'filling':
+    case 'registration':
       return (
         <main id="pager">
           <Registration />
         </main>
       );
 
-    case 'searching':
+    case 'filling':
       return (
         <main id="pager">
           <Lobby />
         </main>
+      );
+    
+    case 'searching':
+      return (
+        <></>
       );
 
     case 'ready':

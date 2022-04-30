@@ -5,9 +5,9 @@ var socket;
 
 function establishConnection() {
   socket = socketIOClient(ENDPOINT, {
-    reconnection: true,
-    reconnectionDelay: 500,
-    reconnectionAttempts: 10,
+    // reconnection: true,
+    // reconnectionDelay: 500,
+    // reconnectionAttempts: 10,
   });
 }
 
