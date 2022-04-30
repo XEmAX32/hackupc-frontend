@@ -44,6 +44,16 @@
   color: #000000;
 }
 
+.special {
+  font-family: 'MADE Mirage';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+}
+
 .buttons {
 	width: 100%;
 	display: flex;
@@ -81,4 +91,49 @@
   background-image: url(./assets/qrcode-border.svg);
   background-position: center;
   background-repeat: no-repeat;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+}
+
+#qrcode-live {
+  width: auto;
+  height: 400px;
+  border-radius: inherit;
+  display: block
+}
+
+#qrcode-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  width: 400px;
+  height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  clip-path: border-box;
+}
+
+.playerIcon {
+  height: 80px;
+  width: 80px;
+  background-color: red;
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+
+.question {
+  border: 2px solid #000000;
+  position: relative;
+  margin: 30px
+}
+
+.question-option {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: inline;
+  padding: 10px 20px;
 }

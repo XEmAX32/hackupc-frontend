@@ -1,35 +1,28 @@
 import React, { useEffect, useState } from "react";
 import logo from './logo.svg';
 import './App.css';
-import { establishConnection } from "./socketWorker";
 import Registration from "./registration";
+import Question from './Question';
 
 function App() {
-  let socket;
-  const [status, setStatus] = useState("not-logged-in");
+  const [status, setStatus] = useState("logged-in");
   const [response, setResponse] = useState();
   const [data, setData] = useState('No result');
-
-  const forwardUser = (userId) => {
-    console.log(userId)
-    socket.emit("register", {id: userId})
+  const question = {
+    text: "Which of the following names belongs to an HackUPC Organizer?",
+    options: [{text: "ciao", type: 0}, {text: "ciaone", type: 1}, {text: "triple ciao", type: 0}, {text: "no clue", type: 0}]
   }
-
-  useEffect(() => {
-    socket = establishConnection();
-  }, []);
-
   if(status == "not-logged-in") {  
     return (
       <main id="pager">
-        <Registration socket status setStatus/>
+        <Registration status setStatus/>
       </main>
     );
   } else {
     return (
-      <div>
-
-      </div>
+      <main id="pager">
+        <Question question={question.text} options={question.options} successfullCallback={() => {}} erronousCallback={() => {}}/>
+      </main>
     );
   }
 }
