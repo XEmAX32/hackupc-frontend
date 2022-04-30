@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './App.css';
 import Registration from "./registration";
-import Question from './Question';
+import FoundKey from './FoundKey';
 
 function App() {
   const [status, setStatus] = useState("logged-in");
@@ -11,7 +11,8 @@ function App() {
     text: "Which of the following names belongs to an HackUPC Organizer?",
     options: [{text: "ciao", type: 0}, {text: "ciaone", type: 1}, {text: "triple ciao", type: 0}, {text: "no clue", type: 0}]
   }
-  if(status === "not-logged-in") {
+
+  if(status == "not-logged-in") {  
     return (
       <main id="pager">
         <Registration status setStatus/>
@@ -20,7 +21,8 @@ function App() {
   } else {
     return (
       <main id="pager">
-        <Question question={question.text} options={question.options} successfullCallback={() => {}} erronousCallback={() => {}}/>
+        <FoundKey curiosity="UPC was ranked as the best university in Spain in computer science, mathematics, atmospheric science and water resources (2021)." img="/prize.png"/>
+        {/* <Question question={question.text} options={question.options} successfullCallback={() => {}} erronousCallback={() => {}}/> */}
       </main>
     );
   }

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@500;600;700&display=swap');
 
+@font-face {
+  font-family: 'MADE Mirage';
+  src: url('./assets/MADE\ Mirage\ Medium\ PERSONAL\ USE.otf');
+}
+
 #pager {
 	display:flex;
 	justify-content:center;
@@ -52,6 +57,7 @@
   line-height: 36px;
   text-align: center;
   color: #000000;
+  letter-spacing: 0.03em;
 }
 
 .buttons {
@@ -123,10 +129,10 @@
   border-radius: 10px;
 }
 
-.question {
+.rectangular-container {
   border: 2px solid #000000;
   position: relative;
-  margin: 30px
+  padding: 40px 56px 50px 56px;
 }
 
 .question-option {
@@ -135,8 +141,17 @@
   box-sizing: border-box;
   border-radius: 10px;
   display: inline;
-  padding: 10px 20px;
+  padding: 10px 30px;
+  user-select: none;
+  cursor: pointer;
 }
+
+.question-correct-option {
+  background-color: #64FCD9;
+}
+/*
+  padding: 10px 20px;
+} */
 
 #wallContainer {
 	width:100%;
