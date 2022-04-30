@@ -4,6 +4,7 @@ import Registration from "./Registration";
 import { socket } from "./socketWorker";
 import Wall from './Wall';
 import Win from './Win';
+import Lobby from './Lobby'
 
 function App() {
   const [status, setStatus] = useState("filling");
@@ -26,7 +27,9 @@ function App() {
 
     case 'searching':
       return (
-        <></>
+        <main id="pager">
+          <Lobby />
+        </main>
       );
 
     case 'ready':

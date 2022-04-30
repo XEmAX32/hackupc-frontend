@@ -15,38 +15,29 @@ function Registration(status, setStatus) {
   const [response, setResponse] = useState();
   const [data, setData] = useState('No result');
   const [QRPopupStatus, setQRPopupStatus] = useState(0);
-  const [players, setPlayers] = useState([]);
 
   var registrationSent = false;
-  const totalPages = 5;
+  const totalPages = 4;
   const images = [img1, img2, img3, img4];
   const titles = ["Find three more hackers to start the game.", "Put your phones togheter to create the room.", "Explore the walls to find three keys.", "Unlock the door and escape."];
   const descriptions = ["📍 Your phone will help you find them inside the campus.", "😉 Every phone represent a wall: look at the game logo to know how.", "❓ Everytime you’ll interact with an object you have to answer a question. Work together to solve them. ", "💡 Easy, right? I won’t be that sure. Look carefully at the keys and follow the right  suggestions. "];
 
-
-  useEffect(() => {
-    console.log('my', socket)
-    socket.on('members', (members) => setPlayers(members))
-    socket.on('status', (members) => console.log('test', members))
-
-  }, []);
-
   if(pageNumber == 4) {
     return (
-      <div className="pageContainer">
+      <div className="pageContainer" style={{height: '100%', marginLeft: -20, marginRight: -20, overflow: 'hidden'}}>
         <div>
-            <div className="title" style={{marginBottom: 20}}>Log in with your HackUPC ID.</div>
+            <div className="title" style={{marginBottom: 20, marginLeft: 10, marginRight: 10, marginTop: 20}}>Log in with your HackUPC ID.</div>
             <div style={{display: 'flex', justifyContent: 'center'}}>
               <div id="qrcode-container">
-                <div id="qrcode-scanner">
-
-                </div>  
+                <div id="qrcode-scanner" />
                 <video id="qrcode-live"/>
               </div>
             </div>
-            <img style={{width: '100%', marginLeft: -20, marginRight: -20}} src={QRCodeGraphics} />
+            <img style={{width: '100%'}} src={QRCodeGraphics} />
             <QrReader
               videoId="qrcode-live"
+              videoStyle={{height: 0}}
+              containerStyle={{display: 'none'}}
               // ViewFinder={() => <div style={{position: 'absolute', top:200, zIndex: 9999}}>test</div>}
               videoContainerStyle={{margin: 0}}
               onResult={(result, error) => {
@@ -67,32 +58,6 @@ function Registration(status, setStatus) {
         </div>
       </div>
     )
-  } else if (pageNumber == 5) {
-    return (
-      <>
-        {players.length > 0 && (<div className="pageContainer">
-          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 30}}>
-            <div className="playerIcon" style={{marginBottom: '20px'}}></div>
-            <div className="special">{players[0].name}</div>
-            <div>TEAM VULCANO</div>
-          </div>
-          <div className="description">
-            <div>📆 02/03/2002 - 20 y/o</div>
-            <div>📍 from Milan, Italy</div>
-            <div>🎓 NABA - Nuova Accademia di Belle Arti</div>
-          </div>
-          <div style={{backgroundColor: '#64FCD9', display: 'flex', flexDirection: 'column', width: '100%'}}>
-            <div className="description">{players.length+1}/4 PLAYERS ONLINE</div>
-            <div style={{display: 'flex', flexDirection: 'column'}}>{players.map(player => (
-              <div>
-                <div className="playerIcon" />
-                <div className="special" style={{fontSize: 15}}>{player.name}</div>
-              </div>
-            ))}</div>
-          </div>
-        </div>)}
-      </>
-    );
   } else {
     return (
       <div className="pageContainer">

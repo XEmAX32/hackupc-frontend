@@ -1,5 +1,5 @@
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "https://e526-37-160-157-79.ngrok.io";
+const ENDPOINT = "https://68da-37-163-17-14.ngrok.io";
 
 var socket;
 
