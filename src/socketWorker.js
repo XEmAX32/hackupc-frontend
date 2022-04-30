@@ -1,5 +1,5 @@
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "https://e526-37-160-157-79.ngrok.io";
+const ENDPOINT = "http://localhost:3232";
 
 var socket;
 

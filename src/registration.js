@@ -23,14 +23,6 @@ function Registration(status, setStatus) {
   const titles = ["Find three more hackers to start the game.", "Put your phones togheter to create the room.", "Explore the walls to find three keys.", "Unlock the door and escape."];
   const descriptions = ["📍 Your phone will help you find them inside the campus.", "😉 Every phone represent a wall: look at the game logo to know how.", "❓ Everytime you’ll interact with an object you have to answer a question. Work together to solve them. ", "💡 Easy, right? I won’t be that sure. Look carefully at the keys and follow the right  suggestions. "];
 
-
-  useEffect(() => {
-    console.log('my', socket)
-    socket.on('members', (members) => setPlayers(members))
-    socket.on('status', (members) => console.log('test', members))
-
-  }, []);
-
   if(pageNumber == 4) {
     return (
       <div className="pageContainer">
@@ -51,9 +43,9 @@ function Registration(status, setStatus) {
               videoContainerStyle={{margin: 0}}
               onResult={(result, error) => {
                 if (!!result) {
-                  console.log(result)
+                  //console.log(result)
                   if(!registrationSent) {
-                    console.log('test')
+                    //console.log('test')
                     loginUser(result.text);
                     registrationSent = true;
                   }
