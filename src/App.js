@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import Registration from "./Registration";
+import Registration from "./registration";
 import { socket } from "./socketWorker";
 import Wall from './Wall';
 import Win from './Win';
@@ -15,6 +15,9 @@ function App() {
     socket.on('status', (newStatus) => {
       setStatus(newStatus);
     })
+
+	socket.on('members', ()=>null)
+
   }, []);
 
   switch(status) {

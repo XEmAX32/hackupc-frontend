@@ -42,9 +42,9 @@ function Registration(status, setStatus) {
               videoContainerStyle={{margin: 0}}
               onResult={(result, error) => {
                 if (!!result) {
-                  console.log(result)
+                  //console.log(result)
                   if(!registrationSent) {
-                    console.log('test')
+                    //console.log('test')
                     loginUser(result.text);
                     registrationSent = true;
                   }
