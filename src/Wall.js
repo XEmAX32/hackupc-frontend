@@ -32,20 +32,21 @@ function Wall ({image, objects, setTime}) {
 
 			</svg>
 
-			{ objects.map( ({question, item}, idx) => <PopUps question={question} item={item} isOpen={idx === openPopup} close={()=>setOpenPopup(null)}/> )}
+			{ objects.filter(({question, item}) => question && item).map( ({question, item}, idx) => <PopUps question={question} item={item} isOpen={idx === openPopup} close={()=>setOpenPopup(null)}/> )}
 
 		</div>
 	)
 }
 
 function PopUps ({question, item, isOpen, close}) {
+
 	const [popupType, setPopupType] = useState(0);
 
   const renderPopup = () => {
     if(popupType == 0)
       return (
         <Question 
-          img={item.image} 
+          img={item.image}
           question={question.text} 
           options={question.answers} 
           correct={question.answer} 
