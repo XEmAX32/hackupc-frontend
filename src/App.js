@@ -7,6 +7,8 @@ import Win from './Win';
 import Lobby from './Lobby'
 
 function App() {
+  const { innerWidth: width, innerHeight: height } = window;
+  const [isPortrait, setPortrait] = useState(height>width);
   const [status, setStatus] = useState("registration");
   const [response, setResponse] = useState();
   const [data, setData] = useState('No result');
@@ -15,6 +17,8 @@ function App() {
   const [time, setTime] = useState();
   const [wallImage, setWallImage] = useState('');
   const [objects, setObjects] = useState([]);
+
+  console.log('orient', isPortrait)
 
   useEffect(() => {
     
@@ -36,6 +40,13 @@ function App() {
       setObjects(data.objects)
     })
 
+    window.addEventListener('resize', () => {
+      const { innerWidth: width, innerHeight: height } = window;
+      setPortrait(height > width);
+      console.log('orient2', height > width)
+    });
+
+    return () => window.removeEventListener('resize');
   }, []);
 
   switch(status) {
@@ -48,7 +59,6 @@ loginUser('53P1TRQmXLhJJ')
         </main>
       );
 
-    default:
     case 'filling':
       return (
         <main id="pager">

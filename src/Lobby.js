@@ -8,6 +8,7 @@ function Lobby(args) {
     setMe(args.members.findIndex(members => members.id == args.userId));
     console.log('members',args.members)
     console.log(args.userId)
+    console.log(me, args.members.findIndex(members => members.id == args.userId))
     // console.log(process.env.REACT_APP_IMG_SERVER_ADDRESS,args.members[me].icon)
 
   }, [args.members]);
@@ -26,9 +27,9 @@ function Lobby(args) {
       <div style={{backgroundColor: '#64FCD9', display: 'flex', flexDirection: 'column', width: '100%'}}>
         <div className="description" style={{marginTop: 20, marginBottom: 20, textAlign: 'center'}}>{args.members.length}/4 PLAYERS ONLINE</div>
         <div style={{marginBottom: 20, display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flexWrap: "wrap"}}>
-          {args.members.map(member => (
+          {args.members.map((member,i) => (
             <div style={{display: 'flex', flexDirection: 'column'}}>
-              <div className="playerIcon" />
+              <div className="playerIcon" style={{backgroundImage: `url(${process.env.REACT_APP_IMG_SERVER_ADDRESS+args.members[i].icon})`}}></div>
               <div className="special" style={{fontSize: 15}}>{member.name}</div>
             </div>
           ))}
