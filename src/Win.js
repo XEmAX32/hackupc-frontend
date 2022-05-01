@@ -4,7 +4,8 @@ import closeBtn from './assets/closeBtn.svg';
 import star from './assets/Star.svg';
 
 function Question({time}) {
-
+  const now = new Date();
+  const minutes = (time-now)/10000/60;
   return (
    <>
     <div class="rectangular-container" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

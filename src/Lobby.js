@@ -6,7 +6,7 @@ function Lobby(args) {
   const [me, setMe] = useState();
   useEffect(() => {
     setMe(args.members.findIndex(members => members.id == args.userId));
-    console.log(args.members)
+    console.log('members',args.members)
     console.log(args.userId)
     // console.log(process.env.REACT_APP_IMG_SERVER_ADDRESS,args.members[me].icon)
 

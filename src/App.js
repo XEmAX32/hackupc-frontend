@@ -48,39 +48,40 @@ loginUser('53P1TRQmXLhJJ')
         </main>
       );
 
-    case 'filling':
+    default:
+    // case 'filling':
       return (
         <main id="pager">
           <Lobby userId={userId} members={members}/>
         </main>
       );
     
-    case 'searching':
-      return (
-        <></>
-      );
+    // case 'searching':
+    //   return (
+    //     <></>
+    //   );
 
-    case 'ready':
-      socket.emit("rotate", true);
-      return (
-        <main id="pager">
-          <div>waiting</div>
-        </main>
-      );
+    // case 'ready':
+    //   socket.emit("rotate", true);
+    //   return (
+    //     <main id="pager">
+    //       <div>waiting</div>
+    //     </main>
+    //   );
 
-    case 'playing':
-      return (
-        <main id="pager">
-          <Wall image={wallImage} objects={objects} setTime={setTime} />
-        </main>
-      );
+    // case 'playing':
+    //   return (
+    //     <main id="pager">
+    //       <Wall image={wallImage} objects={objects} setTime={setTime} />
+    //     </main>
+    //   );
 
-    case 'ended':
-      return (
-        <main id="pager">
-          <Win time={time}/>
-        </main>
-      );
+    // case 'ended':
+    //   return (
+    //     <main id="pager">
+    //       <Win time={time}/>
+    //     </main>
+    //   );
   }
 }
 
