@@ -38,7 +38,7 @@ function App() {
     socket.on("questions", (data) => {
       setWallImage(data.wall)
       setObjects(data.objects)
-      setKeys(data.objects.items.filter(item => item.keys))
+//       setKeys(data.objects.items.filter(item => item.keys))
     })
 
     window.addEventListener('resize', () => {
