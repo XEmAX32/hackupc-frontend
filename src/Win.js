@@ -11,7 +11,7 @@ function Win({time}) {
   return (
    <>
 	<Confetti/>
-    <div class="rectangular-container" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+    <div className="rectangular-container" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       <div className="special" style={{fontSize: 35, marginBottom: 10, display: 'flex', alignItems: 'center', letterSpacing: '0.03em'}}>
         <img src={star} style={{marginRight: 15}}/>
         You Won!

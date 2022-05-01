@@ -205,3 +205,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.rotateNotificationContainer {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  transform-origin: center;
+  transform: rotate(-90deg)
+}
