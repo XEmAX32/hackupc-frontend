@@ -5,6 +5,9 @@ import FoundKey from './FoundKey';
 import NoKey from './NoKey';
 
 function Wall ({image, objects, setTime}) {
+
+	const [openPopup, setOpenPopup] = useState(null)
+
   useEffect(() => {
     setTime(new Date());
     console.log('wall', image, objects)
@@ -18,17 +21,24 @@ function Wall ({image, objects, setTime}) {
 
 				{ !objects ?
 					null :
-					objects.map( (config, idx) => <Object key={idx} {...config}/>)
+					objects.map( ({x,y,width,height}, idx) =>
+						<rect 	x={x} y={y} width={width} height={height}
+								fill={"#fff"} opacity={0}
+								onClick={() => openPopup !== idx && setOpenPopup(idx)}
+								key={idx}
+								/>)
+
 				}
 
 			</svg>
+
+			{ objects.map( ({question, item}, idx) => <PopUps question={question} item={item} isOpen={idx === openPopup} close={()=>setOpenPopup(null)}/> )}
+
 		</div>
 	)
 }
 
-function Object ({x, y, width, height, question, item}) {
-
-	const [isOpen, setIsOpen] = useState(false);
+function PopUps ({question, item, isOpen, close}) {
 	const [popupType, setPopupType] = useState(0);
 
   const renderPopup = () => {
@@ -46,22 +56,22 @@ function Object ({x, y, width, height, question, item}) {
                 setPopupType(2)
           }} 
           errouneousCallback={() => {alert('Wrong answer: retry later!')}} 
-          close={() => setIsOpen(false)}
+          close={close}
         />
       );
     else if(popupType == 1)
       return (
-        <FoundKey text={item.text} img={process.env.REACT_APP_IMG_SERVER_ADDRESS+item.image} close={() => setIsOpen(false)}/>
+        <FoundKey text={item.text} img={process.env.REACT_APP_IMG_SERVER_ADDRESS+item.image} close={close}/>
       )
     else if(popupType == 2)
       return (
-        <NoKey text={item.text} img={process.env.REACT_APP_IMG_SERVER_ADDRESS+item.image} close={() => setIsOpen(false)}/>
+        <NoKey text={item.text} img={process.env.REACT_APP_IMG_SERVER_ADDRESS+item.image} close={close}/>
       )
   }
 
 	return (
 		<>
-			<rect x={x} y={y} width={width} height={height} fill={"#fff"} opacity={0} onClick={() => !isOpen && setIsOpen(true)}/>
+
 
 			<div className={"popupContainer" + (isOpen ? ' open': '')}>
         {renderPopup()}

@@ -14,7 +14,7 @@ function Question(args) {
 
   return (
    <>
-    <div class="rectangular-container">
+    <div class="rectangular-container" style={{margin:30}}>
       <div onClick={() => args.close()} style={{position: 'absolute', display: 'flex', justifyContent: 'center', alignItems: 'center', right: -15, top: -15, border: "2px solid #000", background: '#FFF', padding: 10, cursor: "pointer"}}>
         <img src={closeBtn} />
       </div>

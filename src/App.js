@@ -81,7 +81,7 @@ loginUser('53P1TRQmXLhJJ')
 
     case 'playing':
       return (
-        <main id="pager">
+        <main id="pager" style={{padding:0}}>
           <Wall image={wallImage} objects={objects} setTime={setTime} />
         </main>
       );
