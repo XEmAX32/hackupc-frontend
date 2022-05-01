@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './styles.css';
 import closeBtn from './assets/closeBtn.svg';
 import star from './assets/Star.svg';
+import Confetti from 'react-confetti'
 
 function Win({time}) {
   const now = new Date();
@@ -9,6 +10,7 @@ function Win({time}) {
 
   return (
    <>
+	<Confetti/>
     <div class="rectangular-container" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       <div className="special" style={{fontSize: 35, marginBottom: 10, display: 'flex', alignItems: 'center', letterSpacing: '0.03em'}}>
         <img src={star} style={{marginRight: 15}}/>
