@@ -18,7 +18,7 @@ function Wall ({image, objects, setTime}) {
 
 				{ !objects ?
 					null :
-					objects.map( config => <Object {...config}/>)
+					objects.map( (config, idx) => <Object key={idx} {...config}/>)
 				}
 
 			</svg>
@@ -27,8 +27,6 @@ function Wall ({image, objects, setTime}) {
 }
 
 function Object ({x, y, width, height, question, item}) {
-
-	console.log(x, y, width, height)
 
 	const [isOpen, setIsOpen] = useState(false);
 	const [popupType, setPopupType] = useState(0);
