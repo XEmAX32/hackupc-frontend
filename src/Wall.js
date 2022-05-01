@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Question from './Question'
 import { socket } from './socketWorker.js'
 import Win from './Win';
 import NoKey from './NoKey';
 
-function Wall ({image, objects}) {
-
+function Wall ({image, objects, setTime}) {
+  useEffect(() => {
+    setTime(new Date());
+  }, []);
+  
 	return (
 		<div id="wallContainer" style={{backgroundImage:image}}>
 

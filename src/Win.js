@@ -3,8 +3,7 @@ import './styles.css';
 import closeBtn from './assets/closeBtn.svg';
 import star from './assets/Star.svg';
 
-function Question(args) {
-  const minutes = 7;
+function Question({time}) {
 
   return (
    <>
@@ -14,7 +13,7 @@ function Question(args) {
         You Won!
         <img src={star} style={{marginLeft: 15}}/>
       </div>
-      <div className="description">YOU’VE ESCAPED THE HACKATHON FOR {minutes} MINUTES.</div>
+      <div className="description">YOU’VE ESCAPED THE HACKATHON FOR {3} MINUTES.</div>
       <div style={{border: ".5px solid #000", width: 350, marginTop: 30, marginBottom: 30}}/>
       <div className="description">It’s now time to go back to work :(</div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
 import Registration from "./registration";
-import { socket } from "./socketWorker";
+import { loginUser, socket } from "./socketWorker";
 import Wall from './Wall';
 import Win from './Win';
 import Lobby from './Lobby'
@@ -10,32 +10,39 @@ function App() {
   const [status, setStatus] = useState("registration");
   const [response, setResponse] = useState();
   const [data, setData] = useState('No result');
+  const [userId, setUserId] = useState();
+  const [members, setMembers] = useState([]);
+  const [time, setTime] = useState();
 
   useEffect(() => {
+    
     console.log('here')
     console.log(socket)
-    socket.onAny((tt, content) => console.log(tt, content))
     socket.on('status', (newStatus) => {
       console.log('status', newStatus)
       setStatus(newStatus);
     })
 
-	socket.on('members', ()=>null)
+	  socket.on('members', (members) => setMembers(members))
+
+    socket.onAny((method, content) => console.log(method, content))
 
   }, []);
 
   switch(status) {
     case 'registration':
+loginUser('53P1TRQmXLhJJ')
+    return
       return (
         <main id="pager">
-          <Registration />
+          <Registration setUserId={setUserId}/>
         </main>
       );
 
     case 'filling':
       return (
         <main id="pager">
-          <Lobby />
+          <Lobby userId={userId} members={members}/>
         </main>
       );
     
@@ -52,14 +59,14 @@ function App() {
     case 'playing':
       return (
         <main id="pager">
-          <Wall />
+          <Wall setTime={setTime}/>
         </main>
       );
 
     case 'ended':
       return (
         <main id="pager">
-          <Win />
+          <Win time={time}/>
         </main>
       );
   }

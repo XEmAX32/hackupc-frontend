@@ -1,14 +1,16 @@
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "https://68da-37-163-17-14.ngrok.io";
+const ENDPOINT = process.env.REACT_APP_SERVER_ADDRESS;
 
 var socket;
 
 function establishConnection() {
+  console.log(process.env.REACT_APP_SERVER_ADDRESS)
   socket = socketIOClient(ENDPOINT, {
     // reconnection: true,
     // reconnectionDelay: 500,
     // reconnectionAttempts: 10,
   });
+  console.log('socketing')
 }
 
 function loginUser(userId) {

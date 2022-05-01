@@ -10,7 +10,7 @@ import backBtn from './assets/backBtn.svg'
 import QRCodeGraphics from './assets/qrcode-graphics.svg';
 import player_types from './assets/players-skins.json';
 
-function Registration(status, setStatus) {  
+function Registration(args) {  
   const [pageNumber, setPageNumber] = useState(0);
   const [response, setResponse] = useState();
   const [data, setData] = useState('No result');
@@ -46,6 +46,7 @@ function Registration(status, setStatus) {
                   if(!registrationSent) {
                     //console.log('test')
                     loginUser(result.text);
+                    args.setUserId(result.text);
                     registrationSent = true;
                   }
                 }
