@@ -3,6 +3,7 @@ import Question from './Question'
 import { socket } from './socketWorker.js'
 import FoundKey from './FoundKey';
 import NoKey from './NoKey';
+import InteractivePopup from './InteractivePopup';
 
 function Wall ({image, objects, setTime}) {
 
@@ -32,7 +33,7 @@ function Wall ({image, objects, setTime}) {
 
 			</svg>
 
-			{ objects.map( ({question, item}, idx) => <PopUps question={question} item={item} isOpen={idx === openPopup} close={()=>setOpenPopup(null)}/> )}
+			{ objects.map( ({question, item}, idx) => <PopUps  question={question} item={item} isOpen={idx === openPopup} close={()=>setOpenPopup(null)}/> )}
 
 		</div>
 	)
@@ -42,6 +43,16 @@ function PopUps ({question, item, isOpen, close}) {
 	const [popupType, setPopupType] = useState(0);
 
   const renderPopup = () => {
+    if(item.text == "***" || item.text == "|||") {
+      return (
+        <InteractivePopup 
+          img={item.image} 
+          close={close}
+          type={item.text == "***"}
+          solutions={item.text == "***" ? question.answers : []}
+        />
+      )
+    }
     if(popupType == 0)
       return (
         <Question 
@@ -50,9 +61,10 @@ function PopUps ({question, item, isOpen, close}) {
           options={question.answers} 
           correct={question.answer} 
           successfullCallback={() => {
-              if(item.keys)
-                setPopupType(2)
-              else
+              if(item.keys) {
+                socket.emit('solved');
+                setPopupType(1)
+              } else
                 setPopupType(2)
           }} 
           errouneousCallback={() => {alert('Wrong answer: retry later!')}} 

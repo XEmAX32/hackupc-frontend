@@ -17,6 +17,7 @@ function App() {
   const [time, setTime] = useState();
   const [wallImage, setWallImage] = useState('');
   const [objects, setObjects] = useState([]);
+  const [keys, setKeys] = useState([]);
 
   console.log('orient', isPortrait)
 
@@ -35,9 +36,9 @@ function App() {
     socket.onAny((method, content) => console.log(method, content))
 
     socket.on("questions", (data) => {
-      console.log('app', data)
       setWallImage(data.wall)
       setObjects(data.objects)
+      setKeys(data.objects.items.filter(item => item.keys))
     })
 
     window.addEventListener('resize', () => {
@@ -62,7 +63,7 @@ loginUser('53P1TRQmXLhJJ')
     case 'filling':
       return (
         <main id="pager">
-          <Lobby userId={userId} members={members}/>
+          <Lobby userId={"53P1TRQmXLhJJ"} members={members}/>
         </main>
       );
     
@@ -82,7 +83,7 @@ loginUser('53P1TRQmXLhJJ')
     case 'playing':
       return (
         <main id="pager" style={{padding:0}}>
-          <Wall image={wallImage} objects={objects} setTime={setTime} />
+          <Wall image={wallImage} objects={objects} setTime={setTime} keys={keys}/>
         </main>
       );
 
