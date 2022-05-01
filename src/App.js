@@ -13,11 +13,16 @@ function App() {
   const [userId, setUserId] = useState();
   const [members, setMembers] = useState([]);
   const [time, setTime] = useState();
+  const [wallImage, setWallImage] = useState('');
+  const [objects, setObjects] = useState([]);
 
   useEffect(() => {
     
     console.log('here')
     console.log(socket)
+
+
+    socket.onAny((tt, content) => console.log(tt, content))
     socket.on('status', (newStatus) => {
       console.log('status', newStatus)
       setStatus(newStatus);
@@ -26,6 +31,11 @@ function App() {
 	  socket.on('members', (members) => setMembers(members))
 
     socket.onAny((method, content) => console.log(method, content))
+
+	socket.on("questions", (wallImage, objects) => {
+		setWallImage(wallImage)
+		setObjects(objects)
+	})
 
   }, []);
 
@@ -59,7 +69,7 @@ loginUser('53P1TRQmXLhJJ')
     case 'playing':
       return (
         <main id="pager">
-          <Wall setTime={setTime}/>
+          <Wall image={wallImage} objects setTime={setTime} />
         </main>
       );
 
