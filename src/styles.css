@@ -188,6 +188,8 @@
 
 	z-index:auto;
 	background-color:white;
+
+	overflow:hidden;
 }
 
 .popupContainer.open {
@@ -213,4 +215,24 @@
   align-items: center; 
   transform-origin: center;
   transform: rotate(-90deg)
+}
+
+.keysInput {
+	position:absolute;
+	margin-right:110px;
+
+	margin-top:23px;
+
+	height:78vh;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-evenly;
+}
+
+.keysInput input {
+	display:block;
+	width:130px;
+
+	transform:rotate(-5deg);
+
 }

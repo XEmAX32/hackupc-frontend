@@ -32,7 +32,7 @@ function Wall ({image, objects, setTime}) {
 
 			</svg>
 
-			{ objects.filter(({question, item}) => question && item).map( ({question, item}, idx) => <PopUps question={question} item={item} isOpen={idx === openPopup} close={()=>setOpenPopup(null)}/> )}
+			{ objects.filter(({question, item}) => question && item).map( ({question, item}, idx) => <PopUps question={question} item={item} key={idx} isOpen={idx === openPopup} close={()=>setOpenPopup(null)}/> )}
 
 		</div>
 	)
@@ -43,13 +43,13 @@ function PopUps ({question, item, isOpen, close}) {
 	const [popupType, setPopupType] = useState(0);
 
   const renderPopup = () => {
-    if(item.text == "***" || item.text == "|||") {
+    if(item.text === "***" || item.text === "|||") {
       return (
         <InteractivePopup 
           img={item.image} 
           close={close}
-          type={item.text == "***"}
-          solutions={item.text == "***" ? question.answers : []}
+          type={item.text === "***"}
+          solutions={item.text === "***" ? question.answers : []}
         />
       )
     }
@@ -67,7 +67,7 @@ function PopUps ({question, item, isOpen, close}) {
               } else
                 setPopupType(2)
           }} 
-          errouneousCallback={() => {alert('Wrong answer: retry later!')}} 
+          errouneousCallback={() => null/*alert('Wrong answer: retry later!')}*/}
           close={close}
         />
       );
