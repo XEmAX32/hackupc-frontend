@@ -148,6 +148,7 @@
   padding: 10px 30px;
   user-select: none;
   cursor: pointer;
+  margin-right: 5px
 }
 
 .question-correct-option {
@@ -194,4 +195,8 @@
 	height:100%;
 
 	z-index:1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

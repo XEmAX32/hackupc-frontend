@@ -7,7 +7,7 @@ function NoKey(args) {
   return (
    <>
     <div class="rectangular-container" style={{width: '90%', padding: 0}}>
-      <div onClick={() => {}} style={{position: 'absolute', display: 'flex', justifyContent: 'center', alignItems: 'center', right: -15, top: -15, border: "2px solid #000", background: '#FFF', padding: 10, cursor: "pointer"}}>
+      <div onClick={() => args.close()} style={{position: 'absolute', display: 'flex', justifyContent: 'center', alignItems: 'center', right: -15, top: -15, border: "2px solid #000", background: '#FFF', padding: 10, cursor: "pointer"}}>
         <img src={closeBtn} />
       </div>
       <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
@@ -16,7 +16,7 @@ function NoKey(args) {
         </div>
         <div style={{display: 'flex', flexDirection: 'column', paddingLeft: 30, paddingRight: 30}}>
           <div className="special" style={{textAlign: 'left', fontSize: 30, marginBottom: 100}}>This is not a Key.</div>
-          <div className="description" style={{ textAlign: 'right'}}>{args.curiosity}</div>
+          <div className="description" style={{ textAlign: 'right'}}>{args.text}</div>
         </div>
       </div>
     </div>
