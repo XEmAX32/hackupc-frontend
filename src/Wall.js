@@ -3,7 +3,6 @@ import Question from './Question'
 import { socket } from './socketWorker.js'
 import FoundKey from './FoundKey';
 import NoKey from './NoKey';
-import ImageMap from './ImageMap';
 
 function Wall ({image, objects, setTime}) {
   useEffect(() => {
@@ -13,20 +12,24 @@ function Wall ({image, objects, setTime}) {
 
 	return (
 		<div id="wallContainer">
-      <ImageMap imgpath={process.env.REACT_APP_IMG_SERVER_ADDRESS+image}/>
 
-			{ !objects ?
-				null :
-				objects.map( config => <Object {...config}/>)
-			}
+			<svg viewBox="0 0 2500 1767" style={{height:'100%'}}>
+				<image width={2500} height={1767} href={process.env.REACT_APP_IMG_SERVER_ADDRESS+image} />
+
+				{ !objects ?
+					null :
+					objects.map( (config, idx) => <Object key={idx} {...config}/>)
+				}
+
+			</svg>
 		</div>
 	)
 }
 
 function Object ({x, y, width, height, question, item}) {
 
-	const [isOpen, setIsOpen] = useState(true);
-  const [popupType, setPopupType] = useState(0);
+	const [isOpen, setIsOpen] = useState(false);
+	const [popupType, setPopupType] = useState(0);
 
   const renderPopup = () => {
     if(popupType == 0)
@@ -58,12 +61,7 @@ function Object ({x, y, width, height, question, item}) {
 
 	return (
 		<>
-			{/* <div
-				className="object"
-				style={{left: x, top: y, width, height}}
-				onClick={() => !isOpen && setIsOpen(true)}
-				>
-			</div> */}
+			<rect x={x} y={y} width={width} height={height} fill={"#fff"} opacity={0} onClick={() => !isOpen && setIsOpen(true)}/>
 
 			<div className={"popupContainer" + (isOpen ? ' open': '')}>
         {renderPopup()}
