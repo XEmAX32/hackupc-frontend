@@ -24,11 +24,10 @@ function Wall ({image, objects, setTime}) {
 					null :
 					objects.map( ({x,y,width,height}, idx) =>
 						<rect 	x={x} y={y} width={width} height={height}
-								fill={"#fff"} opacity={0}
-								onClick={() => openPopup !== idx && setOpenPopup(idx)}
-								key={idx}
-								/>)
-
+              fill={"#fff"} opacity={0}
+              onClick={() => openPopup !== idx && setOpenPopup(idx)}
+              key={idx}
+            />)
 				}
 
 			</svg>
