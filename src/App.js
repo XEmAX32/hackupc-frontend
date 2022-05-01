@@ -21,8 +21,6 @@ function App() {
     console.log('here')
     console.log(socket)
 
-
-    socket.onAny((tt, content) => console.log(tt, content))
     socket.on('status', (newStatus) => {
       console.log('status', newStatus)
       setStatus(newStatus);
@@ -32,10 +30,11 @@ function App() {
 
     socket.onAny((method, content) => console.log(method, content))
 
-	socket.on("questions", (wallImage, objects) => {
-		setWallImage(wallImage)
-		setObjects(objects)
-	})
+    socket.on("questions", (data) => {
+      console.log('app', data)
+      setWallImage(data.wall)
+      setObjects(data.objects)
+    })
 
   }, []);
 
@@ -62,14 +61,17 @@ loginUser('53P1TRQmXLhJJ')
       );
 
     case 'ready':
+      socket.emit("rotate", true);
       return (
-        <></>
+        <main id="pager">
+          <div>waiting</div>
+        </main>
       );
 
     case 'playing':
       return (
         <main id="pager">
-          <Wall image={wallImage} objects setTime={setTime} />
+          <Wall image={wallImage} objects={objects} setTime={setTime} />
         </main>
       );
 

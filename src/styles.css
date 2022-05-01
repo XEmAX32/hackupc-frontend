@@ -163,12 +163,18 @@
 
 	position:relative;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: contain;
 
 	/*center popup*/
 	display:flex;
 	justify-content:center;
 	align-items:center;
+
+  overflow: hidden;
+}
+
+.bgImageContainer {
+  transform:scale(.4);
 }
 
 .object {

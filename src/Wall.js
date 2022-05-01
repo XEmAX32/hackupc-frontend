@@ -3,14 +3,17 @@ import Question from './Question'
 import { socket } from './socketWorker.js'
 import Win from './Win';
 import NoKey from './NoKey';
+import ImageMap from './ImageMap';
 
 function Wall ({image, objects, setTime}) {
   useEffect(() => {
     setTime(new Date());
+    console.log('wall', image, objects)
   }, []);
-  
+
 	return (
-		<div id="wallContainer" style={{backgroundImage:image}}>
+		<div id="wallContainer">
+      <ImageMap imgpath={process.env.REACT_APP_IMG_SERVER_ADDRESS+image}/>
 
 			{ !objects ?
 				null :
